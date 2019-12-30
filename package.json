@@ -1,0 +1,14 @@
+{
+  "name": "blog-git-history",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "format-base": "prettier '**/*.{js,jsx,json}'",
+    "format": "yarn format-base --write",
+    "format-check": "yarn format-base -c"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}
