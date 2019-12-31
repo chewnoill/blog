@@ -6,12 +6,14 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "@next/mdx": "^9.1.7",
     "@zeit/next-css": "^1.0.1",
     "emotion-theming": "^10.0.27",
     "next": "^9.1.6",
     "onno": "^1.0.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "remark-emoji": "^2.0.2"
   },
   "scripts": {
     "gen-commits": "node gen-commits.js",
