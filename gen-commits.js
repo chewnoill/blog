@@ -43,13 +43,33 @@ const build = async () => {
     .reverse()
     .map(str => {
       const [commit, summary, body, patch] = str.split(inner);
+      const commitData = JSON.parse(commit);
+      const filename = `generated/${commitData.abbreviated_commit}.mdx`;
+
+      body &&
+        fs.writeFile(filename, body, () => console.log(`wrote ${filename}`));
+
       return {
-        ...JSON.parse(commit),
+        ...commitData,
         summary: summary.trim(),
         body: body.trim(),
         patch: patch && parse(patch.trim())
       };
     });
+
+  fs.writeFile(
+    "generated/index.js",
+    commits
+      .filter(c => !!c.body)
+      .map(
+        ({ abbreviated_commit: c }, i) =>
+          `import commit${c} from './${c}.mdx'\nexport const c${c} = commit${c}`
+      )
+      .join("\n"),
+    () => {
+      console.log("writing generated/index.js");
+    }
+  );
 
   fs.writeFile("generated/commits.json", JSON.stringify(commits), () =>
     console.log("wrote commit history json")

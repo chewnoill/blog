@@ -1,5 +1,7 @@
 import GitDiff from "./git-diff";
 import { Grid, Label } from "ui";
+import * as Bodies from "../generated";
+import { MDXProvider } from "@mdx-js/react";
 
 const GitHistory = ({ commits }) => (
   <Grid gridTemplateColumns="min-content minmax(0,auto)" gridRowGap={6} m={3}>
@@ -9,15 +11,18 @@ const GitHistory = ({ commits }) => (
   </Grid>
 );
 
-const GitCommit = ({ abbreviated_commit, summary, body, patch }) => (
-  <>
-    <Label pr={3}>{abbreviated_commit}</Label>
-    <div>
-      <Label>{summary}</Label>
-      {body}
-      <GitDiff patchs={patch} />
-    </div>
-  </>
-);
+const GitCommit = ({ abbreviated_commit, summary, body, patch }) => {
+  const Body = Bodies[`c${abbreviated_commit}`];
+  return (
+    <MDXProvider>
+      <Label pr={3}>{abbreviated_commit}</Label>
+      <div>
+        <Label>{summary}</Label>
+        {Body && <Body />}
+        <GitDiff patchs={patch} />
+      </div>
+    </MDXProvider>
+  );
+};
 
 export default GitHistory;
