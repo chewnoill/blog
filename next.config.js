@@ -5,5 +5,12 @@ const withMDX = require("@next/mdx")({
     remarkPlugins: [emoji]
   }
 });
+require("dotenv").config();
 
-module.exports = withMDX(withCSS({}));
+module.exports = withMDX(
+  withCSS({
+    env: {
+      REPO_URL: process.env.REPO_URL
+    }
+  })
+);
