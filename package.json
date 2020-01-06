@@ -10,6 +10,7 @@
     "@next/mdx": "^9.1.7",
     "@zeit/next-css": "^1.0.1",
     "emotion-theming": "^10.0.27",
+    "i-am-chewnoill": "^1.0.5",
     "next": "^9.1.6",
     "onno": "^1.0.0",
     "react": "^16.12.0",
