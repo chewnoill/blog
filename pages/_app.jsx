@@ -1,7 +1,10 @@
-import { Flex, Page } from "ui";
+import { ThemeProvider } from "emotion-theming";
+import { theme, Flex, Page } from "ui";
 
 export default ({ Component, pageProps }) => (
-  <Page>
-    <Component {...pageProps} />
-  </Page>
+  <ThemeProvider theme={theme}>
+    <Page>
+      <Component {...pageProps} />
+    </Page>
+  </ThemeProvider>
 );
