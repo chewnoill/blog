@@ -1,5 +1,5 @@
 import GitDiff from "./git-diff";
-import { Grid, Label } from "ui";
+import { Grid, Label, mdxComponents } from "ui";
 import * as Bodies from "../generated";
 import { MDXProvider } from "@mdx-js/react";
 
@@ -14,7 +14,7 @@ const GitHistory = ({ commits }) => (
 const GitCommit = ({ abbreviated_commit, summary, body, patch }) => {
   const Body = Bodies[`c${abbreviated_commit}`];
   return (
-    <MDXProvider>
+    <MDXProvider components={mdxComponents}>
       <Label pr={3}>{abbreviated_commit}</Label>
       <div>
         <Label>{summary}</Label>
