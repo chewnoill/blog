@@ -36,4 +36,8 @@ export const Code = styled(props => (
   <Pre textStyle="code" margin={0} {...props} />
 ))(divSet);
 
+export const InlineCode = styled(props => (
+  <Code d="inline" bg="white" br="2" {...props} />
+))(divSet);
+
 export const Label = styled(props => <H3 ff="mono" {...props} />)(divSet);
