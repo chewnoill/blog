@@ -1,7 +1,22 @@
 import React from "react";
-import { Div } from "ui";
+import { Div, divSet } from "ui";
 import styled from "@emotion/styled";
-import {keyframes} from "@emotion/core";
+import { keyframes } from "@emotion/core";
+
+const followPath = keyframes`
+   from {
+     offset-distance: 0%;
+   }
+   to {
+     offset-distance: 100%;
+}`
+
+const Follower = styled(Div)({
+
+    animation:`${followPath} 400s linear infinite`
+}, ({offsetPath})=>({
+    offsetPath
+}),divSet)
 
 export const SvgLine = () => {
   const refs = useListRefs();
@@ -52,6 +67,9 @@ export const SvgLine = () => {
           <path d={path} />
         </svg>
       </Div>
+      <Follower
+        pos="absolute" mt="-15px" bg="black" s={4} offsetPath={`path('${path}')`}
+        />
     </Div>
   );
 };
