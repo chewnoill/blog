@@ -30,7 +30,7 @@ export const Quote = styled(props => (
   />
 ))(divSet);
 
-export const Text = styled(props => <P p="2" {...props} />)(divSet);
+export const Text = styled(props => <Div p="2" {...props} />)(divSet);
 
 export const Code = styled(props => (
   <Pre textStyle="code" margin={0} {...props} />
